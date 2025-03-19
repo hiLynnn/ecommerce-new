@@ -1,0 +1,10 @@
+composer install
+cp .env.example .env
+php artisan key:generate
+
+php artisan storage:link
+
+php artisan migrate:refresh --seed
+
+how to check laravel version: php artisan --version
+how to check tailwindcss: cat package.json | grep tailwindcss
