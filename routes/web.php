@@ -63,3 +63,4 @@ Route::get('/gio-hang', [CartController::class, 'index'])->name('cart');
 Route::post('/gio-hang/them', [CartController::class, 'add'])->name('cart.add');
 Route::delete('/gio-hang/{id}', [CartController::class, 'remove'])->name('cart.remove');
 Route::put('/gio-hang/{id}', [CartController::class, 'update'])->name('cart.update');
+
