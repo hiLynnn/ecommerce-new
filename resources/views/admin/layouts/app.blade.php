@@ -16,7 +16,7 @@
         <!-- Sidebar -->
         <aside class="w-64 bg-white shadow-sm border-r border-gray-200">
             <div class="p-4 border-b border-gray-200">
-                <h1 class="text-xl font-semibold text-gray-900">Admin Panel</h1>
+                <h1 class="text-xl font-semibold text-gray-900">Admin SkinFood</h1>
             </div>
             <nav class="p-4 space-y-1">
                 <a href="{{ route('admin.dashboard') }}"
@@ -42,6 +42,14 @@
                             d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
                     </svg>
                     Sản phẩm
+                </a>
+                <a href="{{ route('admin.khuyen-mai.index') }}"
+                    class="flex items-center px-3 py-2 text-sm font-medium rounded-md {{ request()->routeIs('admin.khuyen-mai.*') ? 'text-blue-700 bg-blue-50' : 'text-gray-700 hover:bg-gray-50' }}">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                    </svg>
+                    Khuyến mãi
                 </a>
                 <a href="{{ route('admin.don-hang.index') }}"
                     class="flex items-center px-3 py-2 text-sm font-medium rounded-md {{ request()->routeIs('admin.don-hang.*') ? 'text-blue-700 bg-blue-50' : 'text-gray-700 hover:bg-gray-50' }}">

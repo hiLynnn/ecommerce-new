@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Admin\DanhMucController;
 use App\Http\Controllers\Admin\SanPhamController;
+use App\Http\Controllers\Admin\KhuyenMaiController;
 use App\Http\Controllers\Admin\DonHangController;
 use App\Http\Controllers\Admin\NguoiDungController;
 use App\Http\Controllers\Admin\DashboardController;
@@ -44,8 +45,9 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
 
     Route::resource('danh-muc', DanhMucController::class);
     Route::resource('san-pham', SanPhamController::class);
+    Route::resource('khuyen-mai', KhuyenMaiController::class);
     Route::resource('nguoi-dung', NguoiDungController::class);
-    
+
     // Quản lý đơn hàng
     Route::get('/don-hang', [DonHangController::class, 'index'])->name('don-hang.index');
     Route::get('/don-hang/{donHang}', [DonHangController::class, 'show'])->name('don-hang.show');

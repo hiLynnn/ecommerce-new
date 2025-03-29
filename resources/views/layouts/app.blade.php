@@ -188,11 +188,14 @@
                     </ul>
                 </div>
             </li>
-            <li class="cursor-pointer">TÚI MÙ</li>
-            <li class="cursor-pointer">DEAL KHỦNG CHIỀU NÀNG</li>
-            <li class="cursor-pointer">NEW</li>
-            <li class="cursor-pointer">THƯƠNG HIỆU</li>
-            <li class="cursor-pointer">TẠP CHÍ LÀM ĐẸP</li>
+            @foreach ($categories as $category)
+                <li class="cursor-pointer">
+                    <a href="{{ route('category', $category->slug) }}"
+                        class="flex items-center space-x-2 p-2 hover:bg-gray-100 category-link {{ request()->is('danh-muc/' . $category->slug) ? 'category-link-active' : 'text-gray-700 hover:text-gray-900' }}">
+                        <span>{{ $category->ten_danh_muc }}</span>
+                    </a>
+                </li>
+            @endforeach
         </ul>
     </nav>
 
