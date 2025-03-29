@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\KhuyenMai;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class KhuyenMaiController extends Controller
 {
@@ -19,6 +20,11 @@ class KhuyenMaiController extends Controller
     public function create()
     {
         return view('admin.khuyen-mai.create');
+    }
+
+    public function show(string $id)
+    {
+        //
     }
 
     public function store(Request $request)
@@ -57,16 +63,17 @@ class KhuyenMaiController extends Controller
             ->with('success', 'Cập nhật mã giảm giá thành công.');
     }
 
-    public function destroy(KhuyenMai $coupon)
+    public function destroy($id)
     {
-        try {
-            $coupon->delete();
-            return redirect()->route('admin.khuyen-mai.index')
-                ->with('success', 'Xóa khuyến mãi thành công.');
-        } catch (\Exception $e) {
-            return redirect()->route('admin.khuyen-mai.index')
-                ->with('error', 'Không thể xóa.');
+        $coupon = KhuyenMai::withTrashed()->find($id);
+
+        if (!$coupon) {
+            return back()->with('error', 'Không tìm thấy khuyến mãi.');
         }
-    }
+
+        $coupon->delete();
+
+        return back()->with('success', 'Xóa thành công.');
+        }
 
 }
