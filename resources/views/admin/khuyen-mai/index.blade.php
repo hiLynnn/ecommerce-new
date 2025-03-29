@@ -78,8 +78,8 @@
             </table>
         </div>
 
-        {{-- <div class="mt-4">
+        <div class="mt-4">
             {{ $coupons->links() }}
-        </div> --}}
+        </div>
     </div>
 @endsection

@@ -12,8 +12,7 @@ class KhuyenMaiController extends Controller
     public function index()
     {
         $today = Carbon::now('Asia/Ho_Chi_Minh')->format('Y-m-d');
-        $coupons = KhuyenMai::latest()->get();
-
+        $coupons = KhuyenMai::latest()->paginate(10);
         return view('admin.khuyen-mai.index', compact('coupons', 'today'));
     }
 
@@ -63,10 +62,10 @@ class KhuyenMaiController extends Controller
         try {
             $coupon->delete();
             return redirect()->route('admin.khuyen-mai.index')
-                ->with('success', 'Xóa mã giảm giá thành công.');
+                ->with('success', 'Xóa khuyến mãi thành công.');
         } catch (\Exception $e) {
             return redirect()->route('admin.khuyen-mai.index')
-                ->with('error', 'Lỗi: ' . $e->getMessage());
+                ->with('error', 'Không thể xóa.');
         }
     }
 
