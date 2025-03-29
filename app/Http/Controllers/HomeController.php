@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\DanhMuc;
+use App\Models\KhuyenMai;
 use App\Models\SanPham;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -25,7 +27,10 @@ class HomeController extends Controller
 
         $categories = DanhMuc::withCount('sanPhams')
             ->get();
-
-        return view('home', compact('featuredProducts', 'newProducts', 'categories'));
+        $today = Carbon::now('Asia/Ho_Chi_Minh')->format('Y-m-d');
+        $coupons = KhuyenMai::whereDate('promotionsdate_end', '>=', $today)
+            ->latest()
+            ->get();
+        return view('home', compact('featuredProducts', 'newProducts', 'categories','coupons'));
     }
-} 
+}

@@ -34,39 +34,29 @@
 </div>
 
 <div class="flex gap-4 mt-8">
-    <!-- Coupon 1 -->
-    <div class="flex items-center bg-red-50 p-4 rounded-lg shadow relative w-64 border">
-        <!-- Icon -->
-        <div class="w-12 h-12 flex-shrink-0">
-            <img src="/images/logo.webp" alt="Logo" class="w-full h-full rounded-full">
-        </div>
-        <!-- Nội dung -->
-        <div class="ml-3 flex-1">
-            <p class="font-bold text-lg">Giảm 25K</p>
-            <p class="text-sm text-gray-600">Đơn hàng từ 399K</p>
-            <p class="text-xs text-gray-500">Áp dụng cho tất cả sản phẩm</p>
-            <button class="bg-red-600 text-white text-sm px-3 py-1 rounded mt-2">Lưu</button>
-        </div>
-        <!-- Điều kiện -->
-        <span class="absolute top-2 right-3 text-gray-500 text-xs">Điều kiện</span>
-    </div>
+    @foreach($coupons as $coupon)
+        <div class="flex items-center bg-red-50 p-4 rounded-lg shadow relative w-64 border">
+            <!-- Icon -->
+            <div class="w-12 h-12 flex-shrink-0">
+                <img src="/images/logo.webp" alt="Logo" class="w-full h-full rounded-full">
+            </div>
+            <!-- Nội dung -->
+            <div class="ml-3 flex-1">
+                <p class="font-bold text-lg">Giảm {{ number_format($coupon->promotions_number) }}K</p>
+                <p class="text-sm text-gray-600">Đơn hàng từ {{ number_format($coupon->promotions_condition) }}K</p>
+                <p class="text-xs text-gray-500">Áp dụng cho tất cả sản phẩm</p>
+                <button
+                    class="bg-red-600 text-white text-sm px-3 py-1 rounded mt-2 copy-btn"
+                    data-code="{{ $coupon->promotions_code }}"
+                    >
+                    Lưu
+                </button>
 
-    <!-- Coupon 2 -->
-    <div class="flex items-center bg-red-50 p-4 rounded-lg shadow relative w-64 border">
-        <!-- Icon -->
-        <div class="w-12 h-12 flex-shrink-0">
-            <img src="/images/logo.webp" alt="Logo" class="w-full h-full rounded-full">
+            </div>
+            <!-- Điều kiện -->
+            <span class="absolute top-2 right-3 text-gray-500 text-xs">Điều kiện</span>
         </div>
-        <!-- Nội dung -->
-        <div class="ml-3 flex-1">
-            <p class="font-bold text-lg">Giảm 15K</p>
-            <p class="text-sm text-gray-600">Đơn hàng từ 299K</p>
-            <p class="text-xs text-gray-500">Áp dụng cho tất cả sản phẩm</p>
-            <button class="bg-red-600 text-white text-sm px-3 py-1 rounded mt-2">Lưu</button>
-        </div>
-        <!-- Điều kiện -->
-        <span class="absolute top-2 right-3 text-gray-500 text-xs">Điều kiện</span>
-    </div>
+    @endforeach
 </div>
 
 <!-- Xem tất cả -->
@@ -199,7 +189,6 @@
     </div>
 </div>
 
-
 <!-- Khởi tạo Swiper -->
 <script>
      var swiper = new Swiper(".mySwiper", {
@@ -254,5 +243,18 @@
           prevEl: '.flash-deal-prev',
       },
   });
+
+  // === ALERT COUPON CODE ===
+  document.addEventListener("DOMContentLoaded", function () {
+        const buttons = document.querySelectorAll(".copy-btn");
+
+        buttons.forEach(button => {
+            button.addEventListener("click", function () {
+                const couponCode = this.getAttribute("data-coupon"); // Lấy mã từ thuộc tính data-coupon
+                alert("Mã khuyến mãi của bạn: " + couponCode);
+            });
+        });
+    });
 </script>
+
 @endsection
