@@ -9,17 +9,12 @@
     <div class="col-span-2">
         <div class="swiper mySwiper">
             <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <img src="/images/banner1.webp" class="w-full h-auto rounded-lg">
-                </div>
-                <div class="swiper-slide">
-                    <img src="/images/banner2.webp" class="w-full h-auto rounded-lg">
-                </div>
-                <div class="swiper-slide">
-                    <img src="/images/banner3.webp" class="w-full h-auto rounded-lg">
-                </div>
+                @foreach($banners->where('position', 1) as $banner)
+                    <div class="swiper-slide">
+                        <img src="{{ asset('storage/' . $banner->image) }}" class="w-full h-[400px] object-cover rounded-lg">
+                    </div>
+                @endforeach
             </div>
-            <!-- Nút điều hướng -->
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>
             <div class="swiper-pagination"></div>
@@ -28,9 +23,11 @@
 
     <!-- Banner nhỏ bên phải -->
     <div class="flex flex-col gap-4">
-        <img src="/images/banner1.webp" class="w-full h-auto rounded-lg">
-        <img src="/images/banner2.webp" class="w-full h-auto rounded-lg">
+        @foreach($banners->where('position', 2)->take(2) as $banner)
+            <img src="{{ asset('storage/' . $banner->image) }}" class="w-[300px] h-[150px] object-cover rounded-lg">
+        @endforeach
     </div>
+
 </div>
 
 <div class="flex gap-4 mt-8">
@@ -61,7 +58,7 @@
 
 <!-- Xem tất cả -->
 <div class="mt-3 text-center">
-    <a href="#" class="text-red-600 font-semibold uppercase">XEM TẤT CẢ</a>
+    <a href="{{ route('khuyen-mai') }}" class="text-red-600 font-semibold uppercase">XEM TẤT CẢ</a>
 </div>
 
 <div class="bg-white p-6">
@@ -250,7 +247,7 @@
 
         buttons.forEach(button => {
             button.addEventListener("click", function () {
-                const couponCode = this.getAttribute("data-coupon"); // Lấy mã từ thuộc tính data-coupon
+                const couponCode = this.getAttribute("data-code"); // Lấy mã từ thuộc tính data-coupon
                 alert("Mã khuyến mãi của bạn: " + couponCode);
             });
         });

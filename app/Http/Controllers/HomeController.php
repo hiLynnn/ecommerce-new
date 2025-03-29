@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Banner;
 use App\Models\DanhMuc;
 use App\Models\KhuyenMai;
 use App\Models\SanPham;
@@ -31,6 +32,18 @@ class HomeController extends Controller
         $coupons = KhuyenMai::whereDate('promotionsdate_end', '>=', $today)
             ->latest()
             ->get();
-        return view('home', compact('featuredProducts', 'newProducts', 'categories','coupons'));
+        // Lấy danh sách banner
+        $banners = Banner::where('active', 1)
+        ->orderBy('position')
+        ->get();
+        return view('home', compact('featuredProducts', 'newProducts', 'categories','coupons', 'banners'));
+    }
+
+    public function allCoupon(){
+        $today = Carbon::now('Asia/Ho_Chi_Minh')->format('Y-m-d');
+        $coupons = KhuyenMai::whereDate('promotionsdate_end', '>=', $today)
+            ->latest()
+            ->get();
+        return view('coupons', compact('coupons'));
     }
 }

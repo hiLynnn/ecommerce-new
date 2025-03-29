@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\KhuyenMaiController;
 use App\Http\Controllers\Admin\DonHangController;
 use App\Http\Controllers\Admin\NguoiDungController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\BannerController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
@@ -44,6 +45,7 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
     Route::resource('danh-muc', DanhMucController::class);
+    Route::resource('banners', BannerController::class);
     Route::resource('san-pham', SanPhamController::class);
     Route::resource('khuyen-mai', KhuyenMaiController::class);
     Route::resource('nguoi-dung', NguoiDungController::class);
@@ -59,6 +61,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/danh-muc/{slug}', [CategoryController::class, 'show'])->name('category');
 Route::get('/san-pham/{slug}', [ProductController::class, 'show'])->name('products.show');
 Route::get('/tim-kiem', [SearchController::class, 'index'])->name('search');
+Route::get('/khuyen-mai', [HomeController::class, 'allCoupon'])->name('khuyen-mai');
 
 // Cart routes
 Route::get('/gio-hang', [CartController::class, 'index'])->name('cart');
