@@ -4,7 +4,7 @@
 
 @section('content')
 <!-- Banner -->
-<div class="grid grid-cols-3 gap-4">
+{{-- <div class="grid grid-cols-3 gap-4">
     <!-- Banner lớn có Swiper -->
     <div class="col-span-2">
         <div class="swiper mySwiper">
@@ -54,16 +54,16 @@
             <span class="absolute top-2 right-3 text-gray-500 text-xs">Điều kiện</span>
         </div>
     @endforeach
-</div>
+</div> --}}
 
 <!-- Xem tất cả -->
-<div class="mt-3 text-center">
+{{-- <div class="mt-3 text-center">
     <a href="{{ route('khuyen-mai') }}" class="text-red-600 font-semibold uppercase">XEM TẤT CẢ</a>
-</div>
+</div> --}}
 
 <div class="bg-white p-6">
     <!-- Flash Deal Header -->
-    <div class="flex items-center justify-between">
+    {{-- <div class="flex items-center justify-between">
         <h2 class="text-2xl font-bold text-red-600 flex items-center">
             FLASH <span class="text-yellow-500 mx-1">⚡</span> DEAL
         </h2>
@@ -74,10 +74,10 @@
             <div id="seconds" class="bg-black px-3 py-1 rounded">00</div>
         </div>
         <a href="#" class="text-red-500 font-semibold">XEM TẤT CẢ DEAL +</a>
-    </div>
+    </div> --}}
 
     <!-- Swiper Container -->
-    <div class="flash-deal-swiper mt-4">
+    {{-- <div class="flash-deal-swiper mt-4">
         <div class="swiper-wrapper">
             <div class="swiper-slide bg-white border rounded-lg shadow p-3">
                 <img src="/images/sp1.webp" class="w-full rounded-lg" />
@@ -98,12 +98,12 @@
         <!-- Nút điều hướng -->
         <div class="flash-deal-prev swiper-button-prev"></div>
         <div class="flash-deal-next swiper-button-next"></div>
-    </div>
+    </div> --}}
 </div>
 
 
 <!-- Featured Products -->
-<div class="mt-12">
+{{-- <div class="mt-12">
     <h2 class="text-2xl font-bold text-gray-900">Sản phẩm nổi bật</h2>
     <div class="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
         @foreach($featuredProducts as $product)
@@ -130,13 +130,13 @@
             </div>
         @endforeach
     </div>
-</div>
+</div> --}}
 
 <!-- New Products -->
 <div class="mt-12">
     <h2 class="text-2xl font-bold text-gray-900">Sản phẩm mới</h2>
     <div class="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-        @foreach($newProducts as $product)
+        @foreach($products as $product)
             <div class="w-full max-w-xs bg-white rounded-lg shadow-md overflow-hidden group">
                 <div class="relative">
                     <img src="{{ Storage::url($product->anh_dai_dien) }}"
@@ -147,7 +147,7 @@
                         class="absolute top-0 left-0 w-full h-56 object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                 </div>
                 <div class="p-4">
-                    <a class="text-sm font-semibold" href="{{ route('products.show', $product->slug) }}">
+                    <a class="text-sm font-semibold" href="">
                         {{ $product->ten_san_pham }}
                     </a>
                     <div class="flex items-center mt-2">
@@ -163,7 +163,7 @@
 </div>
 
 <!-- Categories -->
-<div class="mt-12">
+{{-- <div class="mt-12">
     <h2 class="text-2xl font-bold text-gray-900">Danh mục sản phẩm</h2>
     <div class="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
         @foreach($categories as $category)
@@ -184,7 +184,7 @@
         </a>
         @endforeach
     </div>
-</div>
+</div> --}}
 
 <!-- Khởi tạo Swiper -->
 <script>

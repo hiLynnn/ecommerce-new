@@ -23,15 +23,15 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
                 <!-- Logo -->
-                <div class="flex-shrink-0">
+                {{-- <div class="flex-shrink-0">
                     <a href="{{ route('home') }}"
                         class="w-12 text-xl font-bold text-gray-900 hover:text-blue-600 transition-colors duration-200 block">
                         <img src="/images/logo.webp" alt="skin food">
                     </a>
-                </div>
+                </div> --}}
 
                 <!-- Search -->
-                <div class="flex-1 max-w-lg mx-8 relative" x-data="{ open: false }">
+                {{-- <div class="flex-1 max-w-lg mx-8 relative" x-data="{ open: false }">
                     <!-- Ô tìm kiếm -->
                     <form action="{{ route('search') }}" method="GET" class="relative">
                         <input type="text" name="q" @focus="open = true" @click.away="open = false"
@@ -88,12 +88,12 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
 
 
 
                 <!-- Navigation -->
-                <nav class="flex items-center space-x-6">
+                {{-- <nav class="flex items-center space-x-6">
                     <a href="{{ route('cart') }}" class="header-nav-link">
                         <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -153,13 +153,13 @@
                             Đăng ký
                         </a>
                     @endauth
-                </nav>
+                </nav> --}}
             </div>
         </div>
     </header>
 
     <!-- Categories -->
-    <nav class="flex items-center justify-center space-x-6 border-b px-4 py-2 bg-white relative">
+    {{-- <nav class="flex items-center justify-center space-x-6 border-b px-4 py-2 bg-white relative">
         <!-- Icon Menu -->
         <button class="text-2xl">
             &#9776;
@@ -197,7 +197,7 @@
                 </li>
             @endforeach
         </ul>
-    </nav>
+    </nav> --}}
 
 
 
