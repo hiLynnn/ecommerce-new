@@ -22,7 +22,7 @@ Route::get('/', function () {
 });
 
 // Auth routes
-Route::middleware('guest')->group(function () {
+Route::middleware(['web'])->group(function () {
     Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
     Route::post('/login', [LoginController::class, 'login']);
     Route::get('/register', [LoginController::class, 'showRegistrationForm'])->name('register');
@@ -41,7 +41,7 @@ Route::middleware('guest')->group(function () {
 // });
 
 // // Admin routes
-Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
+Route::middleware(['web','admin'])->prefix('admin')->name('admin.')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
     // Route::resource('danh-muc', DanhMucController::class);

@@ -15,8 +15,6 @@ class DashboardController extends Controller
     public function index()
 
     {
-        dd(123);
-
         // Thống kê cơ bản
         // $totalOrders = DonHang::count();
         // $totalProducts = SanPham::count();
@@ -85,14 +83,6 @@ class DashboardController extends Controller
         //     ->limit(5)
         //     ->get();
 
-        return view('admin.dashboard', compact(
-            'totalOrders',
-            'totalProducts',
-            'totalUsers',
-            'totalRevenue',
-            'orderStats',
-            'revenueData',
-            'topProducts'
-        ));
+        return view('admin.dashboard');
     }
 }

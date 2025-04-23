@@ -60,16 +60,16 @@ return [
     */
 
     'providers' => [
-        'users' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\NguoiDung::class,
-            'table' => 'nguoi_dung',
-        ],
-
         // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
+        //     'driver' => 'eloquent',
+        //     'model' => App\Models\NguoiDung::class,
+        //     'table' => 'nguoi_dung',
         // ],
+
+        'users' => [
+            'driver' => 'database',
+            'table' => 'user',
+        ],
     ],
 
     /*

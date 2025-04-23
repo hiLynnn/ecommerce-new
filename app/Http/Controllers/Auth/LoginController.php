@@ -21,13 +21,11 @@ class LoginController extends Controller
             'email' => ['required', 'email'],
             'password' => ['required'],
         ]);
-
         $user = User::where('email', $credentials['email'])->first();
 
-        if ($user && Hash::check($credentials['password'], $user->password)) {
-            Auth::login($user);
+        if (!blank($user) && Hash::check($credentials['password'], $user->password)) {
+            Auth::guard('web')->login($user);
             $request->session()->regenerate();
-
             return redirect()->intended(route('admin.dashboard'));
         }
 
